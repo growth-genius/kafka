@@ -5,6 +5,9 @@ services:
     ports:
       - "2181:2181"
     restart: unless-stopped
+    volumes:
+      - ./zookeeper/data:/data
+      - ./zookeeper/datalog:/datalog
   kafka:
     image: wurstmeister/kafka
     ports:
@@ -17,7 +20,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./connectors:/opt/kafka_2.13-2.8.1/connectors
-      - ./kafka_config:/opt/kafka/config
     restart: unless-stopped
     depends_on:
       - zookeeper
