@@ -53,6 +53,7 @@ services:
       CONNECT_PLUGIN_PATH: "/usr/share/java,/etc/kafka-connect/jars"
     volumes:
       - ./component/confluentinc-kafka-connect-jdbc-10.7.1/lib:/etc/kafka-connect/jars
+      - ./component/properties/connect-distributed.properties:/etc/kafka/connect-distributed.properties
     networks:
       my-network:
         ipv4_address: 172.18.0.102
